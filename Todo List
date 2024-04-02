@@ -1,0 +1,105 @@
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+struct Task {
+    string descript;
+    bool perform;
+
+    Task(string desc) : descript(desc),perform(false) {}
+};
+
+class ToDoList {
+private:
+    vector<Task> tasks;
+
+public:
+    void addTask(string descript) {
+        tasks.push_back(Task(descript));
+        cout << "Task added ." ;
+    }
+
+    void viewTasks() {
+        if (tasks.empty()) {
+            cout << "No tasks." << endl;
+        } else {
+            cout << "Tasks:" << endl;
+            for (size_t i = 0; i < tasks.size(); ++i) {
+                cout << i + 1 << ". " << tasks[i].descript << " - ";
+                cout << (tasks[i].perform ? "Completed" : "Pending") << endl;
+            };
+            }
+        }
+   
+
+    void markAsCompleted(int ind) {
+        if (ind >= 1 && ind <= tasks.size()) {
+            tasks[ind - 1].perform = true;
+            cout << " marked as completed." << endl;
+        } else {
+            cout << "Invalid task." << endl;
+        }
+    }
+
+    void removeTask(int ind) {
+        if (ind >= 1 && ind <= tasks.size()) {
+            tasks.erase(tasks.begin() + ind - 1);
+            cout << "Task removed" << endl;
+        } else {
+            cout << "Invalid task." << endl;
+        }
+    }
+};
+
+int main() {
+    ToDoList todo;
+    int option, ind;
+    string descript;
+
+    while (true) {
+        cout << "\nTO-DO LIST MANAGER\n";
+        cout << " -Add Task To Do\n";
+        cout << " -View  Added Tasks\n";
+        cout << " -Mark Task as Completed\n";
+        cout << " -Remove Added Task\n";
+        cout << " -Exit From To Do List Program\n";
+        cout << " ENTER YOUR CHOICE: ";
+        cin >> option;
+
+        switch (option) {
+            case 1:
+                cout << "Enter task description: ";
+                cin.ignore();
+                getline(cin, descript);
+                todo.addTask(descript);
+                system("cls");
+                break;
+            case 2:
+                todo.viewTasks();
+                system("cls");
+                break;
+            case 3:
+                cout << "Enter task index: ";
+                cin >> ind;
+                todo.markAsCompleted(ind);
+                system("cls");
+                break;
+            case 4:
+                cout << "Enter task index to remove: ";
+                cin >> ind;
+                todo.removeTask(ind);
+                system("cls");
+                break;
+            case 5:
+                cout << "Exit program.\n";
+                system("cls");
+                return 0;
+            default:
+                cout << "Invalid choice\n";
+        }
+    }
+
+    return 0;
+}
