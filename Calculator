@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+int main()
+ {
+    char oper;
+    double value1, value2;
+    cout << "Enter  operation to be performed (+, -, *, /): ";
+    cin >> oper;
+    cout << "Enter any  two numbers: ";
+    cin >> value1 >> value2;
+
+    switch(oper) {
+        case '+':
+            cout  << value1 + value2;
+            break;
+
+        case '-':
+            cout << value1 - value2;
+            break;
+
+        case '*':
+            cout  << value1 * value2;
+            break;
+
+        case '/':
+            if (value2 != 0)
+                cout  << value1 / value2;
+            else
+                cout << "Error! ";
+            break;
+        default:
+            cout << " Operation isnot possible!";
+            break;
+    }
+
+    return 0;
+}
