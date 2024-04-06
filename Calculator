@@ -4,10 +4,15 @@ int main()
  {
     char oper;
     double value1, value2;
-    cout << "Enter  operation to be performed (+, -, *, /): ";
+    
+    cout << "Enter First number: ";
+    cin >> value1;
+    cout << "Enter Second number: ";
+    cin >> value2;
+
+    cout << "Enter  operation (+, -, *, /): ";
     cin >> oper;
-    cout << "Enter any  two numbers: ";
-    cin >> value1 >> value2;
+
 
     switch(oper) {
         case '+':
@@ -29,7 +34,7 @@ int main()
                 cout << "Error! ";
             break;
         default:
-            cout << " Operation isnot possible!";
+            cout << " Wrong Operator";
             break;
     }
 
